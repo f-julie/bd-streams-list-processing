@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FileProcessorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-08-31T19:17:18" hostname="DESKTOP-URGQT26" time="0.044">
+  <properties/>
+  <testcase name="filterDocs_processStream_correctResults()" classname="FileProcessorTest" time="0.033"/>
+  <testcase name="filterJava_processStream_correctResults()" classname="FileProcessorTest" time="0.003"/>
+  <testcase name="sortAndSubmitAll_processStream_returnsCorrectResults()" classname="FileProcessorTest" time="0.006"/>
+  <system-out><![CDATA[imports.java submitted to project server!
+main.java submitted to project server!
+userInput.java submitted to project server!
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

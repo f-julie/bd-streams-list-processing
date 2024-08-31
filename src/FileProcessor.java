@@ -2,6 +2,7 @@ import listprocessing.ProjectServerManager;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FileProcessor {
 
@@ -22,7 +23,12 @@ public class FileProcessor {
      * @return Processed list.
      */
     public List<String> filterDocs(List<String> source) {
-        return null;
+        return source.stream()
+                .filter(file -> file.endsWith(".txt") || file.endsWith(".md"))
+                .map(String::toLowerCase)
+                .sorted()
+                .toList();
+        //return null;
     }
 
     /**
@@ -32,7 +38,26 @@ public class FileProcessor {
      * @return Processed Set.
      */
     public Set<String> filterJava(List<String> source) {
-        return null;
+        return source.stream()
+                .filter(file -> file.endsWith(".java"))
+                .map(file -> {
+                    if (file.length() > 0) {
+                        return file.substring(0, 1).toUpperCase() + file.substring(1); // Capitalize only the first letter
+                    }
+                    return file; // Return the file as is if it's empty
+                })
+                .collect(Collectors.toSet());
+
+        //return source.stream()
+        //        .filter(file -> file.endsWith(".java"))
+        //        .map(file -> file.substring(0, 1).toUpperCase() + file.substring(1).toLowerCase())
+        //        .collect(Collectors.toSet());
+
+        //return source.stream()
+        //        .filter(file -> file.endsWith(".java") && Character.isUpperCase(file.charAt(0))) // Check if first letter is uppercase
+        //        .collect(Collectors.toSet());
+
+        //return null;
     }
 
     /**
@@ -42,6 +67,8 @@ public class FileProcessor {
      * @param source Source list.
      */
     public void sortAndSubmitAll(List<String> source) {
-
+        source.stream()
+                .sorted()
+                .forEach(serverManager::submitToProject);
     }
 }
